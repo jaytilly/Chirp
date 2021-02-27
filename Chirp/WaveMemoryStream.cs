@@ -1,11 +1,12 @@
 ﻿using System.IO;
+using System.Linq;
 
 namespace Chirp
 {
     public class WaveMemoryStream
     {
-        private readonly WaveHeader _header;
         private readonly WavefmtSubChunk _fmt;
+        private readonly WaveHeader _header;
         private WavedataSubChunk _data;
 
         public WaveMemoryStream(WaveFormat waveFormat)
@@ -24,6 +25,10 @@ namespace Chirp
             _data = data;
         }
 
+        public int NumChannels => _fmt.NumChannels;
+
+        public int BitsPerSample => _fmt.BitsPerSample;
+
         public void SetData(byte[] soundData, int numSamples)
         {
             _data = new WavedataSubChunk(numSamples, _fmt.NumChannels, _fmt.BitsPerSample, soundData);
@@ -31,7 +36,7 @@ namespace Chirp
 
         public MemoryStream CreateStream()
         {
-            MemoryStream memStream = new MemoryStream();
+            var memStream = new MemoryStream();
 
             _header.SetChunkSize(_fmt.Size, _data.Size);
 
@@ -42,16 +47,6 @@ namespace Chirp
             memStream.Seek(0, SeekOrigin.Begin);
 
             return memStream;
-        }
-
-        public int NumChannels
-        {
-            get { return _fmt.NumChannels; }
-        }
-
-        public int BitsPerSample
-        {
-            get { return _fmt.BitsPerSample; }
         }
     }
 }

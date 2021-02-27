@@ -1,29 +1,35 @@
-﻿namespace Chirp
+﻿using System.Linq;
+
+namespace Chirp
 {
     /// <summary>
-    /// Signal Generator type
+    ///     Signal Generator type
     /// </summary>
     public enum SignalGeneratorType
     {
         /// <summary>
-        /// White noise
+        ///     White noise
         /// </summary>
         White,
+
         /// <summary>
-        /// Sine wave
+        ///     Sine wave
         /// </summary>
         Sin,
+
         /// <summary>
-        /// Square wave
+        ///     Square wave
         /// </summary>
         Square,
+
         /// <summary>
-        /// Triangle Wave
+        ///     Triangle Wave
         /// </summary>
         Triangle,
+
         /// <summary>
-        /// Sawtooth wave
+        ///     Sawtooth wave
         /// </summary>
-        SawTooth,
+        SawTooth
     }
 }

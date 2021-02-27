@@ -1,12 +1,13 @@
 ﻿using System.IO;
+using System.Linq;
 
 //From https://github.com/ghoofman/WaveLibrary
 namespace Chirp
 {
     public class WaveFile
     {
-        private readonly WaveHeader _header;
         private readonly WavefmtSubChunk _fmt;
+        private readonly WaveHeader _header;
         private WavedataSubChunk _data;
 
         public WaveFile(WavedataSubChunk data)
@@ -20,6 +21,9 @@ namespace Chirp
             _fmt = new WavefmtSubChunk(channels, bitsPerSample, sampleRate);
         }
 
+        public int NumChannels => _fmt.NumChannels;
+        public int BitsPerSample => _fmt.BitsPerSample;
+
         public void SetData(byte[] SoundData, int numSamples)
         {
             _data = new WavedataSubChunk(numSamples, _fmt.NumChannels, _fmt.BitsPerSample, SoundData);
@@ -27,7 +31,7 @@ namespace Chirp
 
         public void WriteFile(string file)
         {
-            FileStream fs = File.Create(file);
+            var fs = File.Create(file);
 
             //Set the total file chunk size
             //Has to be set here because we might not know what the actual Data size was until now
@@ -40,8 +44,5 @@ namespace Chirp
             fs.Close();
             fs.Dispose();
         }
-
-        public int NumChannels { get { return _fmt.NumChannels; } }
-        public int BitsPerSample { get { return _fmt.BitsPerSample; } }
     }
 }

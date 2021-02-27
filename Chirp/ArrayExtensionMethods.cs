@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Chirp
 {
@@ -6,7 +7,7 @@ namespace Chirp
     {
         public static byte[] ToByteArray(this short[] shortArray)
         {
-            byte[] bufferBytes = new byte[shortArray.Length * 2];
+            var bufferBytes = new byte[shortArray.Length * 2];
             Buffer.BlockCopy(shortArray, 0, bufferBytes, 0,
                 bufferBytes.Length);
 

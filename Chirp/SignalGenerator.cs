@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Linq;
 
 namespace Chirp
 {
     //Based on https://github.com/naudio/NAudio/blob/master/NAudio.Core/Wave/SampleProviders/SignalGenerator.cs
     public class SignalGenerator
     {
-        private readonly WaveFormat _waveFormat;
         private readonly Random _random = new Random();
 
         public SignalGenerator()
@@ -14,13 +14,13 @@ namespace Chirp
         }
 
         /// <summary>
-        /// Initializes a new instance for the Generator (UserDef SampleRate &amp; Channels)
+        ///     Initializes a new instance for the Generator (UserDef SampleRate &amp; Channels)
         /// </summary>
         /// <param name="sampleRate">Desired sample rate</param>
         /// <param name="channel">Number of channels</param>
         public SignalGenerator(int sampleRate, int channel)
         {
-            _waveFormat = new WaveFormat(sampleRate, channel);
+            WaveFormat = new WaveFormat(sampleRate, channel);
 
             // Default
             Type = SignalGeneratorType.Sin;
@@ -28,7 +28,7 @@ namespace Chirp
             Gain = 1;
         }
 
-        public WaveFormat WaveFormat => _waveFormat;
+        public WaveFormat WaveFormat { get; }
 
         public double Frequency { get; set; }
 
@@ -37,14 +37,14 @@ namespace Chirp
         public SignalGeneratorType Type { get; set; }
 
         /// <summary>
-        /// Reads from this provider.
+        ///     Reads from this provider.
         /// </summary>
         public int Read(short[] buffer, int count)
         {
             if (Gain > 1.0)
                 Gain = 1.0;
 
-            short amplitude = (short) (short.MaxValue * (short) Gain);
+            var amplitude = (short) (short.MaxValue * (short) Gain);
 
             for (uint index = 0; index < count - 1; index++)
             {
@@ -56,29 +56,29 @@ namespace Chirp
                 switch (Type)
                 {
                     case SignalGeneratorType.Sin:
-                        timePeriod = (Math.PI * Frequency) / (WaveFormat.SampleRate);
+                        timePeriod = Math.PI * Frequency / WaveFormat.SampleRate;
                         sampleValue = Convert.ToInt16(amplitude * Math.Sin(timePeriod * index));
                         break;
                     case SignalGeneratorType.Square:
-                        timePeriod = (Frequency) / _waveFormat.SampleRate;
+                        timePeriod = Frequency / WaveFormat.SampleRate;
                         timeIndex = index * timePeriod;
                         modResult = timeIndex % 2;
                         sampleDouble = modResult - 1;
                         sampleValue = sampleDouble > 0 ? amplitude : (short) (amplitude * -1);
                         break;
                     case SignalGeneratorType.Triangle:
-                        timePeriod = Frequency / _waveFormat.SampleRate;
+                        timePeriod = Frequency / WaveFormat.SampleRate;
                         timeIndex = index * timePeriod;
                         modResult = timeIndex % 2;
                         sampleDouble = modResult * 2;
                         if (sampleDouble > 1)
-                            sampleDouble = (2 - sampleDouble);
+                            sampleDouble = 2 - sampleDouble;
                         if (sampleDouble < -1)
-                            sampleDouble = (-2 - sampleDouble);
+                            sampleDouble = -2 - sampleDouble;
                         sampleValue = Convert.ToInt16(sampleDouble * amplitude);
                         break;
                     case SignalGeneratorType.SawTooth:
-                        timePeriod = Frequency / _waveFormat.SampleRate;
+                        timePeriod = Frequency / WaveFormat.SampleRate;
                         timeIndex = index * timePeriod;
                         modResult = timeIndex % 2;
                         sampleDouble = modResult - 1;
