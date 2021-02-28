@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 
 namespace JaybirdLabs.Chirp
 {
@@ -18,7 +17,7 @@ namespace JaybirdLabs.Chirp
             _signalGenerator = signalGenerator ?? throw new ArgumentNullException(nameof(signalGenerator));
         }
 
-        public Stream GenerateStream(SignalGeneratorType signalType, int frequency, int durationInSeconds)
+        public StreamGenerationResult GenerateStream(SignalGeneratorType signalType, int frequency, int durationInSeconds)
         {
             _signalGenerator.Frequency = frequency;
             _signalGenerator.Gain = 1;
@@ -34,7 +33,11 @@ namespace JaybirdLabs.Chirp
             var waveStream = new WaveMemoryStream(_signalGenerator.WaveFormat);
             waveStream.SetData(waveByteData, sampleCount);
 
-            return waveStream.CreateStream();
+            return new StreamGenerationResult
+            {
+                Amplitudes = waveShortData,
+                WaveStream = waveStream.CreateStream()
+            };
         }
     }
 }

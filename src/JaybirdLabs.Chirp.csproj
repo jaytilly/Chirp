@@ -12,7 +12,7 @@
     <PackageProjectUrl>https://www.jaybird.dev/blog/generating-and-playing-wave-forms</PackageProjectUrl>
     <PackageTags>Xamarin, Audio, Wave, Wav, Generator, Jaybird</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.6.1</Version>
+    <Version>0.7.0</Version>
     <PackageIcon>JaybirdLogoNoText512.png</PackageIcon>
   </PropertyGroup>
 
