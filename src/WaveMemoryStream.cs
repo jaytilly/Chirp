@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 
-namespace Chirp
+namespace JaybirdLabs.Chirp
 {
     public class WaveMemoryStream
     {

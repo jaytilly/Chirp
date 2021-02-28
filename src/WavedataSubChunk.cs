@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 //Modified from https://github.com/ghoofman/WaveLibrary
-namespace Chirp
+namespace JaybirdLabs.Chirp
 {
     public class WavedataSubChunk
     {

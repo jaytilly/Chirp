@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Chirp
+namespace JaybirdLabs.Chirp
 {
     //Copied parts from https://github.com/naudio/NAudio/blob/master/NAudio.Core/Wave/WaveFormats/WaveFormat.cs
     public class WaveFormat

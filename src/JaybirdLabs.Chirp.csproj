@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Company>Jaybird Labs, LLC</Company>
+    <Authors>James Thomas</Authors>
+    <Product>JaybirdLabs.Chirp</Product>
+    <Description>Provides a simple way to generated uncompressed wave files.</Description>
+    <Copyright />
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/jaytilly/JaybirdLabs.Chirp</RepositoryUrl>
+    <PackageProjectUrl>https://www.jaybird.dev/blog/generating-and-playing-wave-forms</PackageProjectUrl>
+    <PackageTags>Xamarin, Audio, Wave, Wav, Generator, Jaybird</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.5.0</Version>
+  </PropertyGroup>
+
+</Project>

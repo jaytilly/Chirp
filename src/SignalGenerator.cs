@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Chirp
+namespace JaybirdLabs.Chirp
 {
     //Based on https://github.com/naudio/NAudio/blob/master/NAudio.Core/Wave/SampleProviders/SignalGenerator.cs
     public class SignalGenerator

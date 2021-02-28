@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Chirp
+namespace JaybirdLabs.Chirp
 {
     /// <summary>
     ///     Signal Generator type

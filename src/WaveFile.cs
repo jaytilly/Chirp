@@ -2,7 +2,7 @@
 using System.Linq;
 
 //From https://github.com/ghoofman/WaveLibrary
-namespace Chirp
+namespace JaybirdLabs.Chirp
 {
     public class WaveFile
     {

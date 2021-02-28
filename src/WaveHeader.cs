@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 //From https://github.com/ghoofman/WaveLibrary
-namespace Chirp
+namespace JaybirdLabs.Chirp
 {
     internal class WaveHeader
     {

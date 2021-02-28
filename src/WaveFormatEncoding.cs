@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Chirp
+namespace JaybirdLabs.Chirp
 {
     // Copied from https://github.com/naudio/NAudio/blob/master/NAudio.Core/Wave/WaveFormats/WaveFormatEncoding.cs
 
