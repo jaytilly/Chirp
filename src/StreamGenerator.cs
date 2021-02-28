@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 
 namespace Chirp
 {
@@ -25,7 +24,7 @@ namespace Chirp
             _signalGenerator.Type = signalType;
 
             var bufferSize = _signalGenerator.WaveFormat.AverageBytesPerSecond * durationInSeconds;
-            var sampleCount = (_signalGenerator.WaveFormat.SampleRate * durationInSeconds;
+            var sampleCount = _signalGenerator.WaveFormat.SampleRate * durationInSeconds;
 
             var waveShortData = new short[bufferSize];
             _signalGenerator.Read(waveShortData, bufferSize);

@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Company>Jaybird Labs, LLC</Company>
+    <Authors>James Thomas</Authors>
+    <Product>Xam.Plugin.WaveGenerator</Product>
+    <Description>Provides a simple way to generated uncompressed wave files.</Description>
+  </PropertyGroup>
+
+</Project>
