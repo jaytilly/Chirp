@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace JaybirdLabs.Chirp
 {
@@ -39,7 +38,7 @@ namespace JaybirdLabs.Chirp
         /// <summary>
         ///     Reads from this provider.
         /// </summary>
-        public int Read(short[] buffer, int count)
+        public virtual int Read(short[] buffer, int count)
         {
             if (Gain > 1.0)
                 Gain = 1.0;
